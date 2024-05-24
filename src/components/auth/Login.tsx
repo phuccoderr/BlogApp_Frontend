@@ -7,7 +7,7 @@ const Login: React.FC = () => {
   return (
     <Auth submitLabel="Login" onSubmit={async () => {}}>
       <Link to={"/signup"} style={{ alignSelf: "center" }}>
-        <MUILink>Login</MUILink>
+        <MUILink>Signup</MUILink>
       </Link>
     </Auth>
   );
