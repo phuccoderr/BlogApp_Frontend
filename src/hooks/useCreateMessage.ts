@@ -1,6 +1,5 @@
 import { useMutation } from "@apollo/client";
 import { graphql } from "../gql";
-import { getMessageDocument } from "./useGetMessages";
 import { updateMessages } from "../cache/messages";
 
 const createMessageDocument = graphql(`
