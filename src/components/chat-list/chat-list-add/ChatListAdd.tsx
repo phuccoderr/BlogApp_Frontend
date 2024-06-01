@@ -13,7 +13,7 @@ import {
   Typography,
 } from "@mui/material";
 import { SearchOutlined } from "@mui/icons-material";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useCreateChat } from "../../../hooks/useCreateChat";
 import { UNKNOWN_ERROR_MESSAGE } from "../../../constants/errors";
 import router from "../../Routes";

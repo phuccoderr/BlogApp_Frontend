@@ -32,18 +32,20 @@ const App: React.FC = () => {
         <CssBaseline />
         <Header />
         <Guard>
-          {showChatList ? (
-            <Grid container>
-              <Grid item md={3}>
-                <ChatList />
+          <Container maxWidth="xl">
+            {showChatList ? (
+              <Grid container spacing={5}>
+                <Grid item xs={12} md={5} lg={4} xl={3}>
+                  <ChatList />
+                </Grid>
+                <Grid item xs={12} md={7} lg={8} xl={9}>
+                  <Routes />
+                </Grid>
               </Grid>
-              <Grid item md={9}>
-                <Routes />
-              </Grid>
-            </Grid>
-          ) : (
-            <Routes />
-          )}
+            ) : (
+              <Routes />
+            )}
+          </Container>
         </Guard>
         <Snackbar />
       </ThemeProvider>
@@ -52,10 +54,6 @@ const App: React.FC = () => {
 };
 
 const Routes = () => {
-  return (
-    <Container sx={{ height: "100%" }}>
-      <RouterProvider router={router}></RouterProvider>
-    </Container>
-  );
+  return <RouterProvider router={router}></RouterProvider>;
 };
 export default App;
