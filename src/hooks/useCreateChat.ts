@@ -1,6 +1,5 @@
 import { useMutation } from "@apollo/client";
 import { graphql } from "../gql";
-import { ChatFragment } from "../fragments/chat.fragment";
 import { getChatsDocument } from "./useGetChats";
 
 const createChatDocument = graphql(`

@@ -24,7 +24,6 @@ interface ChatListAddProps {
 }
 
 const ChatListAdd = ({ open, handleClose }: ChatListAddProps) => {
-  const [isPrivate, setIsPrivate] = useState(true);
   const [createChat] = useCreateChat();
   const [error, setError] = useState("");
   const [name, setName] = useState<string | undefined>("");
@@ -32,7 +31,6 @@ const ChatListAdd = ({ open, handleClose }: ChatListAddProps) => {
   const onClose = () => {
     setError("");
     setName("");
-    setIsPrivate(false);
     handleClose();
   };
 
@@ -55,34 +53,14 @@ const ChatListAdd = ({ open, handleClose }: ChatListAddProps) => {
           <Typography variant="h6" component="h2">
             Add Chat
           </Typography>
-          <FormGroup>
-            <FormControlLabel
-              style={{ width: 0 }}
-              control={
-                <Switch
-                  value={isPrivate}
-                  onChange={(e) => setIsPrivate(e.target.checked)}
-                  defaultChecked
-                />
-              }
-              label="Private"
-            />
-          </FormGroup>
-          {isPrivate ? (
-            <Paper sx={{ p: "2px 4px", display: "flex", alignItems: "center" }}>
-              <InputBase sx={{ ml: 1, flex: 1 }} placeholder="Search Users" />
-              <IconButton sx={{ p: "10px" }}>
-                <SearchOutlined />
-              </IconButton>
-            </Paper>
-          ) : (
-            <TextField
-              error={!!error}
-              helperText={error}
-              label="name"
-              onChange={(e) => setName(e.target.value)}
-            ></TextField>
-          )}
+
+          <TextField
+            error={!!error}
+            helperText={error}
+            label="name"
+            onChange={(e) => setName(e.target.value)}
+          ></TextField>
+
           <Button
             variant="outlined"
             onClick={async () => {
@@ -95,8 +73,7 @@ const ChatListAdd = ({ open, handleClose }: ChatListAddProps) => {
                 const chat = await createChat({
                   variables: {
                     createChatInput: {
-                      isPrivate,
-                      name: name || undefined,
+                      name,
                     },
                   },
                 });
